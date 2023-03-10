@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-@login_required(login_url='accounts/login/')
+@login_required(login_url='account/login')
 def index(request):
     user = request.user
     images = PhotoGallery.objects.filter(user_id=user.id)
@@ -24,7 +24,7 @@ def index(request):
     context = {'page_obj': page_obj}
     return render(request, "app/index.html", context)
 
-@login_required(login_url='accounts/login/')
+@login_required(login_url='account/login')
 def add_photo(request):
     user = request.user
     if request.method == 'GET':
